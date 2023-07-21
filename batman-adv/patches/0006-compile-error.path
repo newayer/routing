@@ -1,0 +1,13 @@
+Index: batman-adv-2023.0/net/batman-adv/soft-interface.c
+===================================================================
+--- a/net/batman-adv/soft-interface.c
++++ b/net/batman-adv/soft-interface.c
+@@ -134,7 +134,7 @@ static int batadv_interface_set_mac_addr
+ 		return -EADDRNOTAVAIL;
+ 
+ 	ether_addr_copy(old_addr, dev->dev_addr);
+-	eth_hw_addr_set(dev, addr->sa_data);
++	ether_addr_copy(dev->dev_addr, addr->sa_data);
+ 
+ 	/* only modify transtable if it has been initialized before */
+ 	if (atomic_read(&bat_priv->mesh_state) != BATADV_MESH_ACTIVE)
